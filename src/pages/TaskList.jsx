@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useGlobalContext } from "../context/GlobalContext";
 import { memo } from "react";
-// import TaskRow from '../components/TaskRow'
+const apiUrl = import.meta.env.VITE_APIURL;
 
 const TaskRow = memo(({ title, status, createdAt }) => {
   const getStatusColor = (status) => {
@@ -26,7 +26,12 @@ const TaskRow = memo(({ title, status, createdAt }) => {
 })
 
 export default function TaskList() {
-  const { tasks } = useGlobalContext();
+  const { useTasks } = useGlobalContext();
+
+  const { tasks } = useTasks(`${apiUrl}/tasks`)
+
+
+
   return (
     <>
       <div style={{ height: '25px', marginBottom: '10px' }}>
@@ -39,12 +44,11 @@ export default function TaskList() {
           <p style={{ width: '33%', fontWeight: 'bold' }}>Data di creazione</p>
         </div>
         {tasks.map((t, i) => (
-          <div className="taskList">
+          <div className="taskList" key={i}>
             <TaskRow
               title={t.title}
               status={t.status}
               createdAt={t.createdAt}
-              key={i}
             />
           </div>
         ))}
