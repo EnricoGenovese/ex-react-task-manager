@@ -12,7 +12,7 @@ export default function useTask() {
             .catch(error => console.error(error))
     }, [])
 
-    const addTask = async newTask => {
+    const addTask = async (newTask) => {
         const res = await fetch(`${apiUrl}/tasks`, {
             method: 'POST',
             headers: { 'Content-type': 'application/json' },
@@ -23,7 +23,15 @@ export default function useTask() {
 
         setTasks(prev => [...prev, task])
     }
-    const removeTask = (id) => { }
+    const removeTask = async (id) => {
+        const res = await fetch(`${apiUrl}/tasks/${id}`, {
+            method: 'DELETE',
+        });
+
+        const { success, message } = await res.json();
+        if (!success) throw new Error(message);
+        setTasks(prev => prev.filter((task) => task.id !== id));
+    }
     const deleteTask = () => { }
 
     return { tasks, addTask, removeTask, deleteTask }
