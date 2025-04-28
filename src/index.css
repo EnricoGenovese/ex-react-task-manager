@@ -19,6 +19,11 @@ nav a:hover {
     color: #007bff;
 }
 
+.taskTitle {
+    text-decoration: none;
+    color: inherit;
+}
+
 .taskBody {
     max-width: 800px;
     margin: 40px auto;
