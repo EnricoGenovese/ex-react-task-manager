@@ -33,6 +33,7 @@ export default function TaskDetails() {
     const handleUpdate = async (updatedTask) => {
         try {
             await updateTask(updatedTask)
+            alert('Task modified successfully')
             setShowEditModal(false)
         } catch (err) {
             console.error(err);
