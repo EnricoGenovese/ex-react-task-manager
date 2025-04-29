@@ -44,9 +44,6 @@ export default function AddTask() {
 
   return (
     <>
-      <div>
-
-      </div>
       <form onSubmit={submit}>
         <label>
           Task:
@@ -61,18 +58,18 @@ export default function AddTask() {
         <label>
           Description:
           <textarea
-            type="text"
             ref={descriptionRef}
             placeholder="Add description"
           />
         </label>
-
-        <label htmlFor="status">Status</label>
-        <select name="status" ref={statusRef}>
-          <option value="To do" default>To do</option>
-          <option value="Doing">Doing</option>
-          <option value="Done">Done</option>
-        </select>
+        <label>
+          Status
+          <select name="status" ref={statusRef}>
+            <option value="To do" default>To do</option>
+            <option value="Doing">Doing</option>
+            <option value="Done">Done</option>
+          </select>
+        </label>
         <button type='submit'>Add task</button>
       </form>
 
