@@ -32,7 +32,7 @@ export default function useTask() {
         if (!success) throw new Error(message);
         setTasks(prev => prev.filter((task) => task.id !== id));
     }
-    const deleteTask = () => { }
+    const updateTask = () => { }
 
-    return { tasks, addTask, removeTask, deleteTask }
+    return { tasks, addTask, removeTask, updateTask }
 }
